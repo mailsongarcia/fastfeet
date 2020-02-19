@@ -53,15 +53,12 @@ class WithdrawController {
         .status(400)
         .json({ error: 'This delivery has already withdrawn' });
     }
-    const { date } = req.query;
-    const parseDate = date;
-
-    const validSchedule = isWithinInterval(new Date(), {
+    const { start_date } = req.body;
+    const parseDate = parseISO(start_date);
+    const validSchedule = isWithinInterval(parseDate, {
       start: new Date().setHours(8, 0, 0),
       end: new Date().setHours(18, 0, 0),
     });
-    console.log(parseDate, validSchedule);
-    console.log(parseISO(new Date().setHours(8, 0, 0)));
     if (!validSchedule) {
       return res.status(401).json({
         error: 'Deliveries can only be picked up during business hours!',
@@ -71,18 +68,19 @@ class WithdrawController {
       where: {
         deliveryman_id,
         start_date: {
-          [Op.between]: [startOfDay(parsedDate), endOfDay(parsedDate)],
+          [Op.between]: [startOfDay(parseDate), endOfDay(parseDate)],
         },
       },
     });
     if (deliveries.length >= 5) {
       return res.status(401).json({
-        error: 'The deliveryman has already completed his deliveries.!',
+        error: 'The deliveryman has already completed his deliveries!',
       });
     }
-    // await delivery.update(req.body);
-
-    return res.json(isWithinInterval);
+    await delivery.update(req.body);
+    return res.json({
+      id,
+    });
   }
 }
 
