@@ -10,6 +10,7 @@ import DeliveryController from './app/controllers/DeliveryController';
 import ShowOpenDeliveriesController from './app/controllers/ShowOpenDeliveriesController';
 import WithdrawController from './app/controllers/WithdrawController';
 import FinishDeliveryController from './app/controllers/FinishDeliveryController';
+import DeliveryProblemController from './app/controllers/DeliveryProblemController';
 
 import authMiddleware from './app/middlewares/auth';
 
@@ -30,8 +31,11 @@ routes.put(
   FinishDeliveryController.update
 );
 
+routes.get('/delivery/problems', DeliveryProblemController.index);
+routes.get('/delivery/:id/problems', DeliveryProblemController.show);
+routes.post('/delivery/:id/problems', DeliveryProblemController.store);
 routes.use(authMiddleware);
-
+routes.delete('/problem/:id/cancel-delivery', DeliveryProblemController.delete);
 routes.put('/users', UserController.update);
 
 routes.post('/recipients', RecipientController.store);

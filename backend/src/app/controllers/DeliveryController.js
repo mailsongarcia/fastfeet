@@ -2,6 +2,8 @@ import * as Yup from 'yup';
 import Delivery from '../models/Delivery';
 import Recipient from '../models/Recipient';
 import Deliveryman from '../models/Deliveryman';
+import Queue from '../../lib/Queue';
+import NewDelivery from '../jobs/NewDelivery';
 
 class DeliveryController {
   async index(req, res) {
@@ -41,8 +43,18 @@ class DeliveryController {
       return res.status(400).json({ error: 'Deliveryman not foud!' });
     }
     const { id, product } = await Delivery.create(req.body);
-
-    return res.json({ id, recipient_id, deliveryman_id, product });
+    const delivery = await Delivery.findOne({
+      where: { id },
+      attributes: ['product', 'canceled_at', 'id'],
+      include: [
+        { model: Deliveryman, attributes: ['name', 'email'] },
+        { model: Recipient, attributes: ['name'] },
+      ],
+    });
+    Queue.add(NewDelivery.key, {
+      delivery,
+    });
+    return res.json(delivery);
   }
 
   async update(req, res) {
