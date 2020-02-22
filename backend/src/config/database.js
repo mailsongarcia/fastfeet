@@ -1,12 +1,14 @@
+require('dotenv').config();
+
 module.exports = {
-  dialect: 'postgres', // Banco de dados utilizado.
-  host: 'localhost', // Ou se tivermos usando Toolbox, o ip.
-  username: 'postgres',
-  password: 'docker',
-  database: 'fastfeet', // Database criada diretamente no Postbird.
+  dialect: 'postgres',
+  host: process.env.DB_HOST,
+  username: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME,
   define: {
-    timestamps: true, // É gerada uma coluna Updated At e Created At em cada tabela.
+    timestamps: true,
     underscored: true,
-    underscoredAll: true, // Padrão de tabelas e colunas underscored (!= cammelcase).
+    underscoredAll: true,
   },
 };

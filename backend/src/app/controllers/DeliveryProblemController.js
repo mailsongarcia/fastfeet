@@ -13,15 +13,8 @@ class DeliveryProblemController {
 
   async show(req, res) {
     const { id } = req.params;
-    const DeliveryExist = await Delivery.findOne({
-      where: {
-        delivery_id: id,
-      },
-    });
-    if (!DeliveryExist) {
-      return res.status(400).json({ error: 'Delivery not foud!' });
-    }
-    const problem = await DeliveryProblem.findOne({
+
+    const problem = await DeliveryProblem.findAll({
       where: { delivery_id: id },
     });
 
