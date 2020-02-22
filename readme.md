@@ -52,10 +52,12 @@ Os destinários possuem nome e endereço completo. Eles são cadastrados e atual
 Os entregadores são adicionados por um usuário autenticados. Os entregadores não se autenticam no sistema. Os entregadores possuem rotas para retirar encomendas em um horário definido com limite diário, listas encomendas atribuidas  modificar status como entregue ou reletar problemas. 
 <h3>4. Encomendas</h3>
 As encomendas são criadas e atribuidas por um usuário autenticado. Quando uma encomenda é atribuída a um entregador ele receber um e-mail. Quando a entrega é cancelada devido algum problema o entregador também recebe um e-mail com todos os detalhes.
-## **Usage**
+
+---
+# Istalando Dependências
 
 `bash
-# Istalando Dependências
+
 $ git clone https://github.com/mailsongarcia/fastfeet
 $ cd fastfeet
 $ yarn
