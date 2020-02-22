@@ -1,6 +1,6 @@
 
 <h1 align="center">
-  <img alt="Fastfeet" title="Fastfeet" src=".github/logo.png" width="300px" />
+  <img alt="Fastfeet" title="Fastfeet" src="https://raw.githubusercontent.com/Rocketseat/bootcamp-gostack-desafio-02/master/.github/logo.png" width="300px" />
 </h1>
 <h3 align="center">
   Desafio Final: FastFeet Backend - API Rest com NodeJS/Express
@@ -42,8 +42,16 @@
 - [**EditorConfig**]() — Extension for VSCode.
 
 ---
-## **Funcionalidades **
+## **Funcionalidades**
+<h3>1. Criação e autenticação de usuários Administradores</h3>
+Através de seeds do sequelize criei um usuário Administrador com e-mail e senha. A autenticação do usuário é feita com JWT e ele é responsavel por adicionar entregadores, destinários, atribuir e cancelar entregas. 
 
+<h3>2. Destinários</h3>
+Os destinários possuem nome e endereço completo. Eles são cadastrados e atualizados por um usuário autenticado na aplicação. 
+<h3>3. Entregadores</h3>
+Os entregadores são adicionados por um usuário autenticados. Os entregadores não se autenticam no sistema. Os entregadores possuem rotas para retirar encomendas em um horário definido com limite diário, listas encomendas atribuidas  modificar status como entregue ou reletar problemas. 
+<h3>4. Encomendas</h3>
+As encomendas são criadas e atribuidas por um usuário autenticado. Quando uma encomenda é atribuída a um entregador ele receber um e-mail. Quando a entrega é cancelada devido algum problema o entregador também recebe um e-mail com todos os detalhes.
 ## **Usage**
 
 `bash
