@@ -19,8 +19,6 @@
 ---
 
 
----
-
 ## **Blibiotecass**
 - [**Express**](https://expressjs.com/pt-br/)
 - [**Yup**](https://github.com/jquense/yup)
@@ -44,5 +42,19 @@
 - [**EditorConfig**]() — Extension for VSCode.
 
 ---
+## **Funcionalidades **
 
+## **Usage**
+
+`bash
+# Istalando Dependências
+$ git clone https://github.com/mailsongarcia/fastfeet
+$ cd fastfeet
+$ yarn
+$yarn sequelize db:migrate
+$yarn sequelize db:seed:all
+$yarn dev
+
+
+```
 
