@@ -56,7 +56,7 @@ As encomendas são criadas e atribuidas por um usuário autenticado. Quando uma 
 ---
 # Istalando Dependências
 
-`bash
+```
 
 $ git clone https://github.com/mailsongarcia/fastfeet
 $ cd fastfeet
