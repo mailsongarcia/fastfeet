@@ -14,7 +14,6 @@
 - [**NodeJS**](https://nodejs.org/en/)
 - [**Docker**](https://www.docker.com/)
 - [**Postgres**](https://www.postgresql.org/)
-- [**MongoDB**](https://www.mongodb.com/) 
 - [**Redis**](https://redis.io/) 
 ---
 
